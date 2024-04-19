@@ -11,10 +11,10 @@ server.use(express.json());
 
 async function getDBConnection() {
   const connection = await mysql.createConnection({
-    host: 'localhost',
+    host: 'sql.freedb.tech',
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
-    database: 'museum',
+    database: 'freedb_museum',
   });
   return connection;
 }
@@ -40,6 +40,7 @@ server.get('/works', async (req, res) => {
 
 server.post('/newwork', async (req, res) => {
   const connection = await getDBConnection();
+  console.log('req.body', req.body);
 
   const artistQuerySQL = `INSERT INTO artists (name, lastname, movement, picture) VALUES(?,?,?,?)`;
 
@@ -49,6 +50,7 @@ server.post('/newwork', async (req, res) => {
     req.body.movement,
     req.body.picture,
   ]);
+  console.log('artistresult', artistResult);
   const workQuerySQL = `INSERT INTO work (title, year, image, fk_artists_id) VALUES (?,?,?,?)`;
 
   const [workResult] = await connection.query(workQuerySQL, [
