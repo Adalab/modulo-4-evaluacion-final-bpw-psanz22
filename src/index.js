@@ -62,6 +62,7 @@ server.post('/newwork', async (req, res) => {
     id: workResult.insertId,
     message: 'Todo correcto',
   });
+  connection.end();
 });
 
 server.put('/works/:id_work', async (req, res) => {
@@ -81,6 +82,7 @@ server.put('/works/:id_work', async (req, res) => {
   res.status(200).json({
     success: true,
   });
+  connection.end();
 });
 server.put('/artists/:id', async (req, res) => {
   const idArtist = req.params.id;
@@ -100,6 +102,7 @@ server.put('/artists/:id', async (req, res) => {
   res.status(200).json({
     success: true,
   });
+  connection.end();
 });
 
 server.delete('/works/:id_work', async (req, res) => {
@@ -120,6 +123,7 @@ server.delete('/works/:id_work', async (req, res) => {
       message: 'No se ha eliminado el elemento',
     });
   }
+  connection.end();
 });
 server.delete('/artists/:id', async (req, res) => {
   const idArtist = req.params.id;
@@ -139,4 +143,5 @@ server.delete('/artists/:id', async (req, res) => {
       message: 'No se ha eliminado el elemento',
     });
   }
+  connection.end();
 });
