@@ -34,3 +34,5 @@
 Este proyecto está bajo la licencia [MIT](https://opensource.org/licenses/MIT).
 
 Enlace de Render: https://modulo-4-evaluacion-final-bpw-psanz22.onrender.com/
+
+Para ver la documentación de la API: http://localhost:5002/api-doc/#/ || https://modulo-4-evaluacion-final-bpw-psanz22.onrender.com/api-doc/
