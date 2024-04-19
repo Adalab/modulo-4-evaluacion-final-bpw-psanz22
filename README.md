@@ -2,6 +2,10 @@
 
 ¡Bienvenido al Museo de Mujeres Artistas! Este proyecto de React incluye un servidor que se conecta a la base de datos "museum", donde puedes explorar información sobre mujeres artistas de diversas épocas y sus obras.
 
+Enlace de Render: https://modulo-4-evaluacion-final-bpw-psanz22.onrender.com/
+
+Para ver la documentación de la API: http://localhost:5002/api-doc/#/ || https://modulo-4-evaluacion-final-bpw-psanz22.onrender.com/api-doc/
+
 ## Funcionalidades
 
 - **Visualización de información**: Accede a datos detallados sobre artistas y sus proyectos.
@@ -32,7 +36,3 @@
 ## Licencia
 
 Este proyecto está bajo la licencia [MIT](https://opensource.org/licenses/MIT).
-
-Enlace de Render: https://modulo-4-evaluacion-final-bpw-psanz22.onrender.com/
-
-Para ver la documentación de la API: http://localhost:5002/api-doc/#/ || https://modulo-4-evaluacion-final-bpw-psanz22.onrender.com/api-doc/
