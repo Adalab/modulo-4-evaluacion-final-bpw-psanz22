@@ -1,0 +1,230 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Proyectos API",
+    "version": "1.0.0",
+    "description": "API para la gestión de proyectos y autores"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:5002",
+      "description": "Servidor de desarrollo"
+    },
+    {
+      "url": "https://modulo-4-evaluacion-final-bpw-psanz22.onrender.com/",
+      "description": "Servidor de desarrollo"
+    }
+  ],
+  "paths": {
+    "/works": {
+      "get": {
+        "summary": "Lista todos las artistas y trabajos",
+        "responses": {
+          "200": {
+            "description": "Operación exitosa",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "string"
+                    },
+                    "result": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Project"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/newwork": {
+      "post": {
+        "summary": "Añade nueva artista y obra",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewProject"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Proyecto creado exitosamente"
+          }
+        }
+      }
+    },
+    "/works/:id_work": {
+      "put": {
+        "summary": "Modifica los datos de la obra de una artista",
+        "parameters": [
+          {
+            "name": "idWork",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación exitosa"
+          },
+          "404": {
+            "description": "Obra no encontrada"
+          }
+        }
+      }
+    },
+    "/artists/:id": {
+      "put": {
+        "summary": "Modifica los datos de una artista",
+        "parameters": [
+          {
+            "name": "idArtist",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación exitosa"
+          },
+          "404": {
+            "description": "Artista no encontrada"
+          }
+        }
+      }
+    },
+    "/artists/:id": {
+      "delete": {
+        "summary": "Elimina los datos de una artista",
+        "parameters": [
+          {
+            "name": "idArtist",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación exitosa"
+          },
+          "404": {
+            "description": "Artista no encontrada"
+          }
+        }
+      }
+    }
+  },
+  "/works/:id_work": {
+    "delete": {
+      "summary": "Elimina los datos de una obra",
+      "parameters": [
+        {
+          "name": "idWork",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Operación exitosa"
+        },
+        "404": {
+          "description": "Obra no encontrada"
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "UpdateWork": {
+        "type": "object",
+        "properties": {
+          "idProject": {
+            "type": "integer"
+          },
+          "title": {
+            "type": "string"
+          },
+          "year": {
+            "type": "integer"
+          },
+          "image": {
+            "type": "string"
+          }
+        }
+      },
+      "UpdateArtist": {
+        "type": "object",
+        "properties": {
+          "idArtist": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "lastname": {
+            "type": "string"
+          },
+          "movement": {
+            "type": "string"
+          },
+          "picture": {
+            "type": "string"
+          }
+        }
+      },
+      "NewWork": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "lastname": {
+            "type": "string"
+          },
+          "movement": {
+            "type": "string"
+          },
+          "picture": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "year": {
+            "type": "string"
+          },
+          "image": {
+            "type": "string"
+          },
+          "idWork": {
+            "type": "integer"
+          }
+        }
+      }
+    }
+  }
+}
