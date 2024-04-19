@@ -37,3 +37,29 @@ server.get('/works', async (req, res) => {
     result: result,
   });
 });
+
+server.post('/newwork', async (req, res) => {
+  const connection = await getDBConnection();
+
+  const artistQuerySQL = `INSERT INTO artists (name, lastname, movement, picture) VALUES(?,?,?,?)`;
+
+  const [artistResult] = await connection.query(artistQuerySQL, [
+    req.body.name,
+    req.body.lastname,
+    req.body.movement,
+    req.body.picture,
+  ]);
+  const workQuerySQL = `INSERT INTO work (title, year, image, fk_artists_id) VALUES (?,?,?,?)`;
+
+  const [workResult] = await connection.query(workQuerySQL, [
+    req.body.title,
+    req.body.year,
+    req.body.image,
+    artistResult.insertId,
+  ]);
+  res.status(201).json({
+    success: true,
+    id: workResult.insertId,
+    message: 'Todo correcto',
+  });
+});
