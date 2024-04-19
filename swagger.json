@@ -1,9 +1,9 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "Proyectos API",
+    "title": "API de Mujeres Artistas y sus obras",
     "version": "1.0.0",
-    "description": "API para la gestión de proyectos y autores"
+    "description": "API para la difusión de mujeres artistas y sus respectivas obras"
   },
   "servers": [
     {
@@ -64,7 +64,7 @@
         }
       }
     },
-    "/works/:id_work": {
+    "/work/:id_work": {
       "put": {
         "summary": "Modifica los datos de la obra de una artista",
         "parameters": [
@@ -87,7 +87,7 @@
         }
       }
     },
-    "/artists/:id": {
+    "/artist/:id": {
       "put": {
         "summary": "Modifica los datos de una artista",
         "parameters": [
@@ -132,31 +132,32 @@
           }
         }
       }
-    }
-  },
-  "/works/:id_work": {
-    "delete": {
-      "summary": "Elimina los datos de una obra",
-      "parameters": [
-        {
-          "name": "idWork",
-          "in": "path",
-          "required": true,
-          "schema": {
-            "type": "integer"
+    },
+    "/works/:id_work": {
+      "delete": {
+        "summary": "Elimina los datos de una obra",
+        "parameters": [
+          {
+            "name": "idWork",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
           }
-        }
-      ],
-      "responses": {
-        "200": {
-          "description": "Operación exitosa"
-        },
-        "404": {
-          "description": "Obra no encontrada"
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación exitosa"
+          },
+          "404": {
+            "description": "Obra no encontrada"
+          }
         }
       }
     }
   },
+
   "components": {
     "schemas": {
       "UpdateWork": {

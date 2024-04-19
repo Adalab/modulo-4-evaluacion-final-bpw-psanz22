@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const mysql = require('mysql2/promise');
 const swaggerUI = require('swagger-ui-express');
+const swaggerConfig = require('../swagger.json');
 
 require('dotenv').config();
 
@@ -24,6 +25,8 @@ const port = process.env.PORT || 5002;
 server.listen(port, () => {
   console.log(`Server is listening in port: ${port}`);
 });
+
+server.use('/api-doc', swaggerUI.serve, swaggerUI.setup(swaggerConfig));
 
 server.get('/works', async (req, res) => {
   const connection = await getDBConnection();
@@ -68,7 +71,7 @@ server.post('/newwork', async (req, res) => {
   connection.end();
 });
 
-server.put('/works/:id_work', async (req, res) => {
+server.put('/work/:id_work', async (req, res) => {
   const idWork = req.params.id;
 
   const newData = req.body;
@@ -87,7 +90,7 @@ server.put('/works/:id_work', async (req, res) => {
   });
   connection.end();
 });
-server.put('/artists/:id', async (req, res) => {
+server.put('/artist/:id', async (req, res) => {
   const idArtist = req.params.id;
 
   const newData = req.body;
